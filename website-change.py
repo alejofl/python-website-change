@@ -36,7 +36,7 @@ def get_info():
 
 def write_info_file(last_date, next_date):
     file = open("previous_info.txt", 'w')
-    file.write(f'{last_date}\n{next_date}\n')
+    file.write('{}\n{}\n'.format(last_date, next_date))
     file.close()
 
 def info_changed(last_date, next_date):
@@ -64,7 +64,7 @@ def main():
                 msg['From'] = os.environ.get('EMAIL_FROM')
                 msg['To'] = os.environ.get('EMAIL_TO')
                 msg['Subject'] = 'There was a change on the website you\'re watching'
-                msg.set_content(f'The webstite you\'re watching changed!\nHead to {URL}')
+                msg.set_content('The webstite you\'re watching changed!\nHead to {}'.format(URL))
                 with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
                     smtp.login(os.environ.get('EMAIL_FROM'), os.environ.get('EMAIL_PASSWORD'))
                     smtp.send_message(msg)
