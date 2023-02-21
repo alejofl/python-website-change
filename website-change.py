@@ -73,7 +73,7 @@ def main():
             msg['From'] = os.environ.get('EMAIL_FROM')
             msg['To'] = os.environ.get('EMAIL_TO')
             msg['Subject'] = 'Something went wrong on the website you\'re watching'
-            msg.set_content(f'Something went wrong with your code. Check it please.')
+            msg.set_content('Something went wrong with your code. Check it please.')
             with smtplib.SMTP_SSL(os.environ.get('SMTP_HOST'), os.environ.get('SMTP_PORT')) as smtp:
                 smtp.login(os.environ.get('EMAIL_FROM'), os.environ.get('EMAIL_PASSWORD'))
                 smtp.send_message(msg)
